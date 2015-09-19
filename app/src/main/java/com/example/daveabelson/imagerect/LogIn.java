@@ -7,6 +7,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.parse.Parse;
+
 public class LogIn extends AppCompatActivity {
 
     //UI
@@ -17,6 +19,11 @@ public class LogIn extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Enable Local Datastore.
+        Parse.enableLocalDatastore(this);
+
+        Parse.initialize(this, "29m4pj2PQ7Za5Z9WQJR9VYJJl8aR6ztVMCJcVniq", "ubc7v82NKyXKeDdQ0gpDbwFHZWtZWe5r53I42K48");
         setContentView(R.layout.activity_log_in);
 
         //Set up UI
