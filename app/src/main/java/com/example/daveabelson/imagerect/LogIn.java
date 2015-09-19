@@ -4,13 +4,48 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class LogIn extends AppCompatActivity {
+
+    //UI
+    private Button login;
+    private Button register;
+    private Button facebook;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+
+        //Set up UI
+        login = (Button)findViewById(R.id.loginSignin);
+        register = (Button)findViewById(R.id.loginRegister);
+        facebook = (Button)findViewById(R.id.loginFacebook);
+
+        //Set event listeners
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     @Override
