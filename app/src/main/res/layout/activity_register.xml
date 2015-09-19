@@ -44,7 +44,6 @@
         android:text="Sign In"
         android:id="@+id/registerRegister"
         android:layout_weight="0.3"
-        android:weight="1"
         android:layout_gravity="center_horizontal"
         android:layout_margin="20dp"
         android:textSize="48dp" />
