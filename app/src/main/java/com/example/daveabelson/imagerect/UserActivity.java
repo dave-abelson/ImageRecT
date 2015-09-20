@@ -21,7 +21,7 @@ public class UserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_in);
+        setContentView(R.layout.activity_user);
 
         //Set up UI
         user = (EditText)findViewById(R.id.userUsername);
@@ -32,8 +32,8 @@ public class UserActivity extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = user.getText().toString();
-                String pass = password.getText().toString();
+//                String username = user.getText().toString();
+//                String pass = password.getText().toString();
 
                 /*************************
                 Verify with server
