@@ -1,13 +1,14 @@
 package com.example.daveabelson.imagerect;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+
+import com.parse.Parse;
 
 public class LogIn extends AppCompatActivity {
 
@@ -20,6 +21,10 @@ public class LogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
+
+        //Enable local database
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this, "29m4pj2PQ7Za5Z9WQJR9VYJJl8aR6ztVMCJcVniq", "ubc7v82NKyXKeDdQ0gpDbwFHZWtZWe5r53I42K48");
 
         //Set up UI
         login = (Button)findViewById(R.id.loginSignin);
