@@ -1,5 +1,6 @@
 package com.example.daveabelson.imagerect;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -7,6 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.parse.LogInCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
 
 /**
  * Created by stanc on 9/19/15.
@@ -21,7 +27,7 @@ public class UserActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_in);
+        setContentView(R.layout.activity_user);
 
         //Set up UI
         user = (EditText)findViewById(R.id.userUsername);
@@ -34,11 +40,27 @@ public class UserActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String username = user.getText().toString();
                 String pass = password.getText().toString();
+                Toast.makeText(UserActivity.this, "Submitting...", Toast.LENGTH_LONG).show();
 
                 /*************************
                 Verify with server
                  *************************/
+                ParseUser.logInInBackground(username, pass, new LogInCallback(){
 
+                    @Override
+                    public void done(ParseUser parseUser, ParseException e) {
+                        if(e == null){
+                            //User now logged in
+
+                            Intent i = new Intent(UserActivity.this, MainActivity.class);
+                            startActivity(i);
+                        } else {
+                            //Something went wrong
+                            //Check e.getCode() and e.getMessage()
+                            Toast.makeText(UserActivity.this, "Error logging in! Try again!", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
 
             }
         });

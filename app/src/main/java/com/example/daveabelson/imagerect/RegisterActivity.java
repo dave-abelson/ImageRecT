@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
+
 public class RegisterActivity extends AppCompatActivity {
 
     //UI
@@ -33,6 +37,25 @@ public class RegisterActivity extends AppCompatActivity {
                 /*
                  Register user into database
                  */
+
+                ParseUser p = new ParseUser();
+                p.setUsername(user.getText().toString());
+                p.setPassword(pass.getText().toString());
+                p.setEmail(email.getText().toString());
+                p.signUpInBackground(new SignUpCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if(e == null){
+                            //User account was created
+                            finish();
+                        } else {
+                            //Something went wrong
+                            //i.e. username taken,
+                            //blank password, etc.
+                            //Check e.getCode() and e.getMessage() and inform the user
+                        }
+                    }
+                });
             }
         });
     }

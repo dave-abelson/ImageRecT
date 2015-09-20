@@ -1,7 +1,8 @@
 package com.example.daveabelson.imagerect;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -35,6 +36,8 @@ public class LogIn extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(LogIn.this, UserActivity.class);
+                startActivity(i);
 
             }
         });
@@ -42,6 +45,8 @@ public class LogIn extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(LogIn.this, RegisterActivity.class);
+                startActivity(i);
 
             }
         });
