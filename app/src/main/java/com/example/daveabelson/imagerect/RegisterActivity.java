@@ -1,5 +1,6 @@
 package com.example.daveabelson.imagerect;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -7,10 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import com.parse.ParseException;
-import com.parse.ParseUser;
-import com.parse.SignUpCallback;
+import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -35,27 +33,26 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 /*
-                 Register user into database
+                 Send info to next page
                  */
 
-                ParseUser p = new ParseUser();
-                p.setUsername(user.getText().toString());
-                p.setPassword(pass.getText().toString());
-                p.setEmail(email.getText().toString());
-                p.signUpInBackground(new SignUpCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if(e == null){
-                            //User account was created
-                            finish();
-                        } else {
-                            //Something went wrong
-                            //i.e. username taken,
-                            //blank password, etc.
-                            //Check e.getCode() and e.getMessage() and inform the user
-                        }
-                    }
-                });
+                String mEmail = email.getText().toString();
+                String mUser = user.getText().toString();
+                String mPass = pass.getText().toString();
+
+                //Check that none are null
+                if(mEmail.isEmpty() || mUser.isEmpty() || mPass.isEmpty()){
+                    Toast.makeText(RegisterActivity.this, "Fill in all fields!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                //Pass info
+                Intent i = new Intent(RegisterActivity.this, ProfileActivity.class);
+                i.putExtra("email", email.getText().toString());
+                i.putExtra("user", user.getText().toString());
+                i.putExtra("pass", pass.getText().toString());
+                startActivity(i);
+                finish();
             }
         });
     }

@@ -41,7 +41,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="0px"
-        android:text="Sign In"
+        android:text="Next"
         android:id="@+id/registerRegister"
         android:layout_weight="0.3"
         android:layout_gravity="center_horizontal"
